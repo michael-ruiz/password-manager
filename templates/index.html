@@ -5,14 +5,14 @@
     <title>Login</title>
 </head>
     <body>
-        <div>
+        <form method="POST" action="/passwords">
             <label>Username</label>
-            <input type="text" required>
+            <input type="text" required name="user">
             <br>
             <label>Password</label>
-            <input type="password" required>
+            <input type="password" required name="passw">
             <br>
-            <button>Login</button>
-        </div>
+            <input type="submit", value="Login">
+        </form>
     </body>
 </html>
