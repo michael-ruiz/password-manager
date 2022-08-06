@@ -4,8 +4,8 @@ import os
 db = mysql.connector.connect(host='localhost', user='root', passwd=os.getenv('DB_PASS'), database='testDB')
 cursor = db.cursor(buffered=True)
 
-def get_passwords():
-    cursor.execute('SELECT * from Passwords')
+def get_passwords(mainUser):
+    cursor.execute(f'SELECT * from Passwords where mainUser = "{mainUser}"')
     return cursor
 
 def get_users():

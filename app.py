@@ -3,20 +3,29 @@ from database import get_users, get_passwords, confirm_user
 
 app = Flask(__name__)
 users = get_users()
-input_user = ''
-input_passw = ''
 
+@app.route('/login', methods=['POST', 'GET'])
 @app.route('/', methods=['POST', 'GET'])
-def home():
-    return render_template('index.html')
+def login():
+    return render_template('login.html')
 
-@app.route('/passwords', methods=['POST', 'GET'])
-def display():
+@app.route('/homepage', methods=['POST', 'GET'])
+def home():
+    global input_user
+    global input_passw
     input_user = request.form['user']
     input_passw = request.form['passw']
 
+    return render_template('home.html')
+
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+@app.route('/passwords', methods=['POST', 'GET'])
+def display():
     if (confirm_user(users, input_user, input_passw)):
-        passwords = get_passwords()
+        passwords = get_passwords(input_user)
         return render_template('passwords.html', passwords=passwords)
 
     return 'no work'
