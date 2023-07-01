@@ -16,10 +16,18 @@ export default function Home() {
     let sites = JSON.parse(localStorage.getItem('passwords'));
     let arr = [];
 
-    console.log(sites["amazon"]);
-
+    for (let item in sites){
+      let obj = sites[item];
+      let row = (<tr>
+        <th>{item}</th>
+        <th>{obj['email']}</th>
+        <th>{obj['password']}</th>
+      </tr>);
+      arr.push(row);
+    }
+    
     return (
-      <tr></tr>
+      <>{arr}</>
     )
   }
 
