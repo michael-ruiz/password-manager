@@ -1,0 +1,7 @@
+node_modules
+
+# firebase config
+src/firebaseConfig.json
+
+# mac file
+.DS_Store
